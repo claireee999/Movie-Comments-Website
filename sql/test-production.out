@@ -1,0 +1,94 @@
+mysql> source test-production.sql
++--------+---------------------------------------------------+------+---------+----------+----------------+
+| id     | name                                              | year | runtime | avg_rate | num_of_ratings |
++--------+---------------------------------------------------+------+---------+----------+----------------+
+| 120737 | The Lord of the Rings: The Fellowship of the Ring | 2001 |     178 |     8.80 |        1900616 |
+| 167260 | The Lord of the Rings: The Return of the King     | 2003 |     201 |     9.00 |        1871353 |
+| 167261 | The Lord of the Rings: The Two Towers             | 2002 |     179 |     8.80 |        1689466 |
++--------+---------------------------------------------------+------+---------+----------+----------------+
+3 rows in set (0.00 sec)
+
++------------------------------+
+| name                         |
++------------------------------+
+| The Kid                      |
+| Sherlock Jr.                 |
+| The Gold Rush                |
+| Metropolis                   |
+| The General                  |
+| The Passion of Joan of Arc   |
+| M                            |
+| It Happened One Night        |
+| Gone with the Wind           |
+| Mr. Smith Goes to Washington |
++------------------------------+
+10 rows in set (0.00 sec)
+
++-----------------------------------------------+
+| name                                          |
++-----------------------------------------------+
+| The Shawshank Redemption                      |
+| The Godfather                                 |
+| The Lord of the Rings: The Return of the King |
+| 12 Angry Men                                  |
+| The Dark Knight                               |
+| Schindler's List                              |
+| The Godfather Part II                         |
+| Pulp Fiction                                  |
+| Jai Bhim                                      |
+| Fight Club                                    |
++-----------------------------------------------+
+10 rows in set (0.01 sec)
+
++---------------------------------------------------+
+| name                                              |
++---------------------------------------------------+
+| The Shawshank Redemption                          |
+| The Godfather                                     |
+| 12 Angry Men                                      |
+| The Godfather Part II                             |
+| Schindler's List                                  |
+| The Lord of the Rings: The Return of the King     |
+| The Dark Knight                                   |
+| Pulp Fiction                                      |
+| The Good, the Bad and the Ugly                    |
+| Forrest Gump                                      |
+| The Lord of the Rings: The Fellowship of the Ring |
+| Fight Club                                        |
+| The Lord of the Rings: The Two Towers             |
+| Inception                                         |
+| Jai Bhim                                          |
++---------------------------------------------------+
+15 rows in set (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
++-----+--------+------+-----------+
+| rid | mid    | rate | comment   |
++-----+--------+------+-----------+
+|   1 | 111161 |  9.0 | I love.   |
+|   2 | 111161 |  9.3 | I love 2. |
++-----+--------+------+-----------+
+2 rows in set (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
++-----+--------+------+------------+
+| rid | mid    | rate | comment    |
++-----+--------+------+------------+
+|   1 | 111161 |  9.8 | Super love |
+|   2 | 111161 |  4.0 | Boring     |
++-----+--------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> quit
