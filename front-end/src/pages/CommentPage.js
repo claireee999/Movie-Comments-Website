@@ -23,7 +23,7 @@ function CommentPage() {
     }, [refetch]);
 
     return (
-        <div className="App">
+        <div className="CommentPage">
             <Row style={{textAlign: 'center', display: 'block'}}>
                 <h4>
                     Comments for {location.state.name}
