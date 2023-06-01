@@ -24,6 +24,7 @@ function LoginWindow(props) {
             res => {
             }
         )*/
+        console.log(props.setUsername);
         props.setUsername(username);
         navigate('/');
     };

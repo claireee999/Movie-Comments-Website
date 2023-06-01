@@ -5,12 +5,9 @@ import Button from "react-bootstrap/Button";
 import {Link, useLocation} from "react-router-dom";
 
 
-function LoginPage() {
-    let location = useLocation();
-    console.log(location.state);
-   // const { username, setUsername } = location.state;
-    const username = location.state.username;
-    const setUsername = location.state.setUsername;
+function LoginPage(props) {
+    console.log(props);
+    //console.log(props.setUsername);
 
 
     return (
@@ -23,7 +20,7 @@ function LoginPage() {
                     Login
                 </h4>
             </Row>
-            <LoginWindow username={username} setUsername={setUsername}/>
+            <LoginWindow username={props.username} setUsername={props.setUsername}/>
             <Button variant="primary" type="submit" href='/register'>
                Register
             </Button>

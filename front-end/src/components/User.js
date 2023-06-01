@@ -5,12 +5,12 @@ import Row from 'react-bootstrap/Row';
 import {Link} from "react-router-dom";
 
 const User = (props) => {
-    console.log(props);
-    //
+    //console.log(props);
+    //state={{ username: props.username, setUserName: props.setUsername }}
     return (
         <Form>
             <Row style={{textAlign: 'Right', display:'block'}}>
-                <Link to="/login" state={{ username: props.username, setUserName: props.setUsername }}>
+                <Link to="/login">
                     {props.username ?? 'Login'}
                 </Link>
             </Row>

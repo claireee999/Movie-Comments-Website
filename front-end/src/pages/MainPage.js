@@ -6,13 +6,12 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import User from "../components/User";
 
-function MainPage() {
+function MainPage(props) {
     const [searchTerm, setSearchTerm] = useState("");
     const [order, setOrder] = useState("Rating High to Low");
     const [data, setData] = useState([]);
     const [value, setValue] = useState(7);
     const [num, setNum] = useState(250);
-    const [username, setUsername] = useState('kevin');
 
     useEffect( () => {
         const handleFormSubmit = async () => {
@@ -39,7 +38,7 @@ function MainPage() {
 
     return (
         <div className="App">
-            <User username={username} setUsername={setUsername}/>
+            <User username={props.username} setUsername={props.setUsername}/>
             <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             <Filter value={value} setValue={setValue} order={order} setOrder={setOrder} num={num} setNum={setNum}/>
             <Layout data={data}/>
