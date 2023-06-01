@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS CS348_MOVIE_DB; 
-CREATE DATABASE CS348_MOVIE_DB; 
+DROP DATABASE IF EXISTS MOVIE_DB; 
+CREATE DATABASE MOVIE_DB; 
 
-USE CS348_MOVIE_DB;
+USE MOVIE_DB;
 
 DROP TABLE IF EXISTS Movie;
 
@@ -72,6 +72,7 @@ DROP TABLE IF EXISTS Reviewer;
 CREATE TABLE Reviewer (
   id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(255),
+  pass_word VARCHAR(16),
   num_of_ratings INT,
   PRIMARY KEY (id)
 );
@@ -135,5 +136,5 @@ DELIMITER ;
 
 -- Create users
 CREATE user IF NOT EXISTS 'user1'@'localhost' identified by 'Password0!'; 
-GRANT all on CS348_MOVIE_DB.* to 'user1'@'localhost'; 
+GRANT all on MOVIE_DB.* to 'user1'@'localhost'; 
 ALTER user 'user1'@'localhost' identified with mysql_native_password by 'Password0!';
