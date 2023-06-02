@@ -63,16 +63,16 @@ def add_review():
             # print("r:", bool(review_exist))
             if review_exist:
                 connect("UPDATE Rating SET rate = " + str(review['rating']) + ", comment = '" +
-                        str(review['comment']) + "' WHERE rid = " + str(rid) + " and mid = " + str(review['mid']))
+                        str(review['comment']) + "' dateComment = NOW() WHERE rid = " + str(rid) + " and mid = " + str(review['mid']))
             else:
                 # print("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
                 connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
         else:
-            add_reviewer = "INSERT INTO Reviewer (username, num_of_ratings) VALUES ('" + str(review['username']) + "', 0);"
+            add_reviewer = "INSERT INTO Reviewer (username, pass_word, num_of_ratings) VALUES ('" + str(review['username']) + "', '" + str(review['pass_word'])" + "', 0);"
             connect(add_reviewer)
             id = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username'] + "'"))
             rid = id[0][0]
-            connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
+            connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "', NOW());")
 
         result = "Comment added"
         return jsonify(result)
