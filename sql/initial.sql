@@ -73,6 +73,7 @@ CREATE TABLE Reviewer (
   id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(255),
   pass_word VARCHAR(16),
+  password487 VARCHAR(16),
   num_of_ratings INT,
   PRIMARY KEY (id)
 );
@@ -84,6 +85,7 @@ CREATE TABLE Rating (
   mid INT NOT NULL,
   rate DECIMAL(4, 2),
   comment VARCHAR(255),
+  dateComment DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (rid, mid),
   FOREIGN KEY (rid) REFERENCES Reviewer(id),
   FOREIGN KEY (mid) REFERENCES Movie(id)

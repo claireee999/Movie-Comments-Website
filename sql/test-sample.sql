@@ -20,7 +20,7 @@ WHERE r <= 3;
 
 # Feature 5:
 INSERT INTO Reviewer (username, pass_word, num_of_ratings) VALUES ('john', 'password123', 0);
-INSERT INTO Rating VALUES (1, 0111161, 9.0, "I love.");
+INSERT INTO Rating VALUES (1, 0111161, 9.0, "I love.", NOW());
 SELECT * FROM Rating;
 
 # Feature 6:
