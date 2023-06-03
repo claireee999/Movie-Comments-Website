@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS MOVIE_DB; 
-CREATE DATABASE MOVIE_DB; 
+DROP DATABASE IF EXISTS MOVIE_DB;
+CREATE DATABASE MOVIE_DB;
 
 USE MOVIE_DB;
 
@@ -11,7 +11,9 @@ CREATE TABLE Movie (
   year INT,
   runtime INT,
   avg_rate DECIMAL(4,2),
-  num_of_ratings INT
+  num_of_ratings INT,
+  cover VARCHAR(255),
+  plot VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS Actor;
@@ -101,7 +103,7 @@ CREATE INDEX idx_username
 ON Reviewer(username);
 
 CREATE INDEX idx_rating
-ON Rating(rid, mid); 
+ON Rating(rid, mid);
 
 DELIMITER $$
 
@@ -118,8 +120,8 @@ CREATE TRIGGER update_reviewer_num_of_ratings
   AFTER INSERT ON Rating
   FOR EACH ROW
 BEGIN
-    UPDATE Reviewer 
-    SET num_of_ratings = num_of_ratings + 1 
+    UPDATE Reviewer
+    SET num_of_ratings = num_of_ratings + 1
     WHERE id = NEW.rid;
 END$$
 
@@ -137,6 +139,6 @@ DELIMITER ;
 
 
 -- Create users
-CREATE user IF NOT EXISTS 'user1'@'localhost' identified by 'Password0!'; 
-GRANT all on MOVIE_DB.* to 'user1'@'localhost'; 
+CREATE user IF NOT EXISTS 'user1'@'localhost' identified by 'Password0!';
+GRANT all on MOVIE_DB.* to 'user1'@'localhost';
 ALTER user 'user1'@'localhost' identified with mysql_native_password by 'Password0!';
