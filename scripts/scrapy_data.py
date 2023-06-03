@@ -55,7 +55,6 @@ for movie in top:
     cover = mv['cover url']
     rate = mv["rating"]
     vote = mv['votes']
-    print(len(plot), type(plot))
     insert_movie = f"INSERT INTO Movie VALUES ({id}, \"{name}\", {year}, {int(runtime[0])}, {rate}, {vote}," + "\"cover\", " + "\"plot\"" + ");\n"
     insert_movies += insert_movie
 
