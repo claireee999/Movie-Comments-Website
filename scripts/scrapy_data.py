@@ -48,10 +48,15 @@ for movie in top:
     year = mv["year"]
     runtime = mv["runtimes"]
     plot = mv['plot outline']
+    # replace " and ' to avoid error
+    plot = plot.replace("\'", "\\\'")
+    plot = plot.replace("\"", "\\\"")
+    #####
     cover = mv['cover url']
     rate = mv["rating"]
     vote = mv['votes']
-    insert_movie = f"INSERT INTO Movie VALUES ({id}, \"{name}\", {year}, {int(runtime[0])}, {rate}, {vote}" + cover + plot + ");\n"
+    print(len(plot), type(plot))
+    insert_movie = f"INSERT INTO Movie VALUES ({id}, \"{name}\", {year}, {int(runtime[0])}, {rate}, {vote}," + "\"cover\", " + "\"plot\"" + ");\n"
     insert_movies += insert_movie
 
     genres = mv["genres"]
@@ -91,7 +96,7 @@ insert_directions += "COMMIT;\n"
 insert_casts += "COMMIT;\n"
 
 cur_path = os.path.dirname(__file__)
-new_path = os.path.relpath('../sql/data.sql', cur_path)
+new_path = os.path.relpath('../sql/sampleData.sql', cur_path)
 
 file = open(new_path, "w", encoding="utf-8")
 file.write(insert_movies)

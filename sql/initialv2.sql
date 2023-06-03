@@ -13,7 +13,7 @@ CREATE TABLE Movie (
   avg_rate DECIMAL(4,2),
   num_of_ratings INT,
   cover VARCHAR(255),
-  plot VARCHAR(255)
+  plot TEXT
 );
 
 DROP TABLE IF EXISTS Actor;
@@ -86,7 +86,7 @@ CREATE TABLE Rating (
   rid INT NOT NULL,
   mid INT NOT NULL,
   rate DECIMAL(4, 2),
-  comment VARCHAR(255),
+  comment TEXT,
   dateComment DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, -- used to ordering the comments
   PRIMARY KEY (rid, mid),
   FOREIGN KEY (rid) REFERENCES Reviewer(id),
