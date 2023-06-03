@@ -101,7 +101,7 @@ CREATE INDEX idx_username
 ON Reviewer(username);
 
 CREATE INDEX idx_rating
-ON Rating(rid, mid);
+ON Rating(rid, mid); 
 
 DELIMITER $$
 
