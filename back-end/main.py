@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, url_for, redirect, send_file, jsonify
 from flask_cors import CORS, cross_origin
 from connection import connect
+from login import login_bp
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+app.secret_key = 'your_secret_key'
 
-# api for feature 1,2,3,4
 @app.route("/", methods=['POST', 'GET'])
 def main():
     if request.method == 'GET':
@@ -42,7 +43,6 @@ def get_comments():
     return jsonify(d)
 
 
-# api for feature 5
 @app.route('/add_review', methods=['POST'])
 def add_review():
     if request.method == 'POST':
@@ -67,17 +67,16 @@ def add_review():
             else:
                 # print("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
                 connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "');")
-        else:
-            add_reviewer = "INSERT INTO Reviewer (username, pass_word, num_of_ratings) VALUES ('" + str(review['username']) + "', '" + str(review['pass_word'])" + "', 0);"
-            connect(add_reviewer)
-            id = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username'] + "'"))
-            rid = id[0][0]
-            connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "', NOW());")
+        # else:
+            #add_reviewer = "INSERT INTO Reviewer (username, pass_word, num_of_ratings) VALUES ('" + str(review['username']) + "', '" + str(review['pass_word'])" + "', 0);"
+            #connect(add_reviewer)
+            #id = connect("SELECT id FROM Reviewer WHERE username = '" + str(review['username'] + "'"))
+            #rid = id[0][0]
+            #connect("INSERT INTO Rating VALUES (%d, %d, %d, '" % (rid, review['mid'], review['rating']) + review['comment'] + "', NOW());")
 
         result = "Comment added"
         return jsonify(result)
 
-# feature for updating rating
 @app.route('/update_review', methods=['POST'])
 def update_review():
     if request.method == 'POST':
@@ -96,6 +95,7 @@ def update_review():
         result = "Update success"
         return jsonify(result)
 
+app.register_blueprint(login_bp)
 
 if __name__ == '__main__':
     app.run(port=5000, debug=False)

@@ -5,6 +5,7 @@ import MainPage from './pages/MainPage';
 import CommentPage from './pages/CommentPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import UserPage from "./pages/UserPage";
 function App() {
     const [username, setUsername] = useState(null);
     return (
@@ -20,6 +21,7 @@ function App() {
                     element={<LoginPage username={username} setUsername={setUsername} />}
                 />
                 <Route path="/register" element={<RegisterPage />} />
+                <Route path="/user" element={<UserPage />} />
             </Routes>
         </BrowserRouter>
     );

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
 
 
 function LoginWindow(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [validUser, setValidUser] = useState('');
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
     const handleUsernameChange = (event) => {
@@ -18,15 +19,32 @@ function LoginWindow(props) {
         setPassword(event.target.value);
     };
 
+    const handleShowModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-       /* await axios.post('http://localhost:5000/login',{username: username, password:password}).then(
+       await axios.post('http://localhost:5000/login',{username: username, password:password}).then(
             res => {
+                props.setRefetch(!props.refetch);
+                console.log(username, password);
+                setValidUser(res.data);
+                console.log(validUser);
             }
-        )*/
-        console.log(props.setUsername);
-        props.setUsername(username);
-        navigate('/');
+        )
+        if (validUser === 'valid') {
+            props.setUsername(username);
+            navigate('/');
+        } else{
+            handleShowModal();
+            setUsername('');
+            setPassword('');
+        }
     };
 
     return (
@@ -56,6 +74,19 @@ function LoginWindow(props) {
                     Login
                 </Button>
             </Form>
+            <Modal show={showModal} onHide={handleCloseModal}>
+                <Modal.Header>
+                    <Modal.Title>Error</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Wrong username or password. Please try again.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleCloseModal}>
+                        OK
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }
