@@ -36,6 +36,7 @@ function MainPage(props) {
         fetchData('http://localhost:5000');
     }, [])
 
+    console.log(props.username);
     return (
         <div className="App">
             <User username={props.username} setUsername={props.setUsername}/>

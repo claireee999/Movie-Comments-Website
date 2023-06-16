@@ -8,20 +8,7 @@ import AddComment from "../components/AddComment";
 
 
 function LoginPage(props) {
-    const [refetch, setRefetch] = useState(false);
-   /*
-    const fetchData = async (url) => {
-        await axios.get(url, {params: {id: location.state.id}}).then(
-            res => {
-            }
-        )
-    };
 
-    useEffect(() => {
-        fetchData('http://localhost:5000/login');
-    }, [refetch]);
-
-*/
     return (
         <div className="LoginPage">
             <Button variant="primary" type="submit" href='/'>
@@ -32,7 +19,7 @@ function LoginPage(props) {
                     Login
                 </h4>
             </Row>
-            <LoginWindow username={props.username} setUsername={props.setUsername} refetch={refetch} setRefetch={setRefetch} />
+            <LoginWindow username={props.username} setUsername={props.setUsername}/>
             <Button variant="primary" type="submit" href='/register'>
                Register
             </Button>

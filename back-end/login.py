@@ -21,12 +21,10 @@ def login():
         print(username, password)
         print(is_valid_credentials(username,password))
         if is_valid_credentials(username, password):
-            # session["username"] = username
             return 'valid'
         else:
             error_message = "Invalid credentials. Please try again."
-            return 'invalid'
-            #return render_template("login.html", error=error_message)
+            return render_template("login.html", error=error_message)
 
     return render_template("login.html")
 

@@ -16,7 +16,7 @@ const Comment = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(props.id);
+        // console.log(props.id);
         await axios.post('http://localhost:5000/update_review',{username: props.username, mid: props.id, rating:rating * 2, comment:commentText}).then(
             res => {
                 //props.setRefetch(true);

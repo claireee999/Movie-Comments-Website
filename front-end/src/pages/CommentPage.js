@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 
 function CommentPage() {
     let location = useLocation();
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState([]);
     const [refetch, setRefetch] = useState(false);
     const fetchData = async (url) => {
         await axios.get(url, {params: {id: location.state.id}}).then(

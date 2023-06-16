@@ -3,6 +3,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 
 function UserPage(props) {
+    console.log(props.username);
     return (
         <Container>
 

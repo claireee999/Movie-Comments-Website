@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import {Link} from "react-router-dom";
 
 const User = (props) => {
+    console.log(props.username);
     if (props.username == null) {
         return (
             <Form>
@@ -20,7 +21,7 @@ const User = (props) => {
         return (
             <Form>
                 <Row style={{textAlign: 'Right', display:'block'}}>
-                    <Link to="/user" username={props.username}>
+                    <Link to="/user">
                         {props.username ?? 'Login'}
                     </Link>
                 </Row>

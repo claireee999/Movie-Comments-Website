@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect, send_file,
 from flask_cors import CORS, cross_origin
 from connection import connect
 from login import login_bp
+from register import register_bp
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -96,6 +97,7 @@ def update_review():
         return jsonify(result)
 
 app.register_blueprint(login_bp)
+app.register_blueprint(register_bp)
 
 if __name__ == '__main__':
     app.run(port=5000, debug=False)

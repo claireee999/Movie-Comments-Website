@@ -29,22 +29,21 @@ function LoginWindow(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-       await axios.post('http://localhost:5000/login',{username: username, password:password}).then(
+       await axios.post('http://localhost:5000/login',{username: username, password:password})
+           .then(
             res => {
-                props.setRefetch(!props.refetch);
-                console.log(username, password);
+                //console.log(username, password);
                 setValidUser(res.data);
-                console.log(validUser);
-            }
-        )
-        if (validUser === 'valid') {
-            props.setUsername(username);
-            navigate('/');
-        } else{
-            handleShowModal();
-            setUsername('');
-            setPassword('');
-        }
+                //console.log(validUser);
+                props.setUsername(username);
+                navigate('/');
+            })
+           .catch(error => {
+               //console.error('Error:', error);
+               handleShowModal();
+               setUsername('');
+               setPassword('');
+           })
     };
 
     return (

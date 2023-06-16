@@ -21,7 +21,7 @@ function App() {
                     element={<LoginPage username={username} setUsername={setUsername} />}
                 />
                 <Route path="/register" element={<RegisterPage />} />
-                <Route path="/user" element={<UserPage />} />
+                <Route path="/user" element={<UserPage username={username} setUsername={setUsername}/>} />
             </Routes>
         </BrowserRouter>
     );
