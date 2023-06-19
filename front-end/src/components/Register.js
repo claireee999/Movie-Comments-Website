@@ -10,8 +10,17 @@ function RegisterWindow(props) {
     const [rePassword, setRePassword] = useState('');
     const [usernameTaken, setUsernameTaken] = useState(false);
     const [passwordMatch, setPasswordMatch] = useState(true);
+    const [passwordOK, setPasswordOK] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
+
+    const checkString = (inputString) => {
+        const hasNumber = /\d/.test(inputString);                  // Check for numbers
+        const hasLowerCase = /[a-z]/.test(inputString);           // Check for lowercase letters
+        const hasUpperCase = /[A-Z]/.test(inputString);           // Check for uppercase letters
+
+        return hasNumber && hasLowerCase && hasUpperCase;         // Return true if all conditions are met
+    }
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -36,7 +45,12 @@ function RegisterWindow(props) {
     };
 
     const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
+        //setPassword(event.target.value);
+        if (event.target.value.length < 8|| event.target.value.length > 16 ||!checkString(event.target.value)){
+            setPasswordOK(false);
+        } else {
+            setPasswordOK(true);
+        }
         if (event.target.value !== rePassword) {
             setPasswordMatch(false);
         } else {
@@ -46,7 +60,7 @@ function RegisterWindow(props) {
     };
 
     const handleRePasswordChange = (event) => {
-        console.log(passwordMatch, event.target.value);
+        //console.log(passwordMatch, event.target.value);
         if (event.target.value !== password) {
             setPasswordMatch(false);
         } else {
@@ -94,6 +108,7 @@ function RegisterWindow(props) {
                         value={password}
                         onChange={handlePasswordChange}
                     />
+                    {!passwordOK && <Alert variant="danger">Password must be 8-16 characters long, containing a combination of numbers, uppercase letters and lowercase letters.</Alert>}
                 </Form.Group>
 
                 <Form.Group controlId="formPassword2">

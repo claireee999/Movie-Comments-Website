@@ -34,5 +34,6 @@ def register():
         info = request.get_json()
         username = info['username']
         password = info['password']
-        # connect(insert into)
+        # connect("INSERT INTO Reviewer (username, password, num_of_ratings) VALUES ('" + str(username) + "','" + str(password) + "', 0);")
+
     return 'success'
