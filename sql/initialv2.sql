@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS Reviewer;
 CREATE TABLE Reviewer (
   id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(255),
-  pass_word VARCHAR(16),
+  password VARCHAR(16),
   password487 VARCHAR(16), -- something related to co487
   num_of_ratings INT,
   PRIMARY KEY (id)
