@@ -5,7 +5,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import axios from "axios";
 import Register from "../components/Register";
 
-function RegisterPage() {
+function RegisterPage(props) {
     return (
         <div className="register-page">
             <Button variant="primary" type="submit" href='/'>
@@ -16,7 +16,7 @@ function RegisterPage() {
                     Register
                 </h4>
             </Row>
-            <RegisterWindow/>
+            <RegisterWindow username={props.username} setUsername={props.setUsername}/>
         </div>
 
     );

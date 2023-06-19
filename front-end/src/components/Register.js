@@ -62,6 +62,7 @@ function RegisterWindow(props) {
                 res => {
                     handleShowModal();
                     props.setUsername(username);
+                    console.log(props.username);
                 })
             .catch(
                 error => {
